@@ -9,6 +9,8 @@
 #include "./img.h"
 #include "./bitmap_loader.h"
 
+#include "Windows.h"
+
 #pragma comment(lib, "gdi32.lib")
 
 
