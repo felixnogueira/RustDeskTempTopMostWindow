@@ -113,11 +113,11 @@ LRESULT CALLBACK TrashParentWndProc(HWND hwnd, UINT message, WPARAM wParam, LPAR
 	switch (message)
 	{
 	case WM_CREATE:
-		ShowCursor(FALSE);
+		//ShowCursor(FALSE);
 		break;
 
 	case WM_DESTROY:
-		ShowCursor(TRUE);
+		//ShowCursor(TRUE);
 		PostQuitMessage(0);
 		break;
 
@@ -577,4 +577,24 @@ BOOL IsWindowsVersionOrGreater(
 		VER_MAJORVERSION | VER_MINORVERSION |
 		VER_SERVICEPACKMAJOR | VER_SERVICEPACKMINOR,
 		condition_mask);
+}
+
+BOOL SetCursorToZIndex0()
+{
+	const TCHAR* CursorWndTitle = _T("RustDeskPrivacyWindow");
+
+	HWND hwndCursor = FindWindow(NULL, CursorWndTitle);
+	if (!hwndCursor)
+	{
+		return FALSE;
+	}
+
+	// Set the window to the bottom of the Z-order
+	if (!SetWindowPos(hwndCursor, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE))
+	{
+		MessageBox(NULL, _T("SetWindowPos failed!"), _T("Error"), MB_ICONERROR);
+		return FALSE;
+	}
+
+	return TRUE;
 }
