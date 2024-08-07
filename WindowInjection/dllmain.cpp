@@ -111,9 +111,11 @@ LRESULT CALLBACK TrashParentWndProc(HWND hwnd, UINT message, WPARAM wParam, LPAR
 	switch (message)
 	{
 	case WM_CREATE:
+		ShowCursor(FALSE);
 		break;
 
 	case WM_DESTROY:
+		ShowCursor(TRUE);
 		PostQuitMessage(0);
 		break;
 
