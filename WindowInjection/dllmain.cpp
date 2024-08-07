@@ -595,6 +595,6 @@ BOOL SetCursorToZIndex0()
 		MessageBox(NULL, _T("SetWindowPos failed!"), _T("Error"), MB_ICONERROR);
 		return FALSE;
 	}
-
-	return TRUE;
+	return TRUE;
+	
 }
